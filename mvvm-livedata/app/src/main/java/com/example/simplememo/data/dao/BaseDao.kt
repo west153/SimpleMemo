@@ -1,0 +1,22 @@
+package com.example.simplememo.data.dao
+
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Update
+import io.reactivex.Completable
+
+interface BaseDao<T> {
+
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  fun insert(any: T): Completable
+
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  fun insertAll(any: List<T>): Completable
+
+  @Delete
+  fun delete(any: T)
+
+  @Update(onConflict = OnConflictStrategy.ABORT)
+  fun update(any: T): Int
+}
