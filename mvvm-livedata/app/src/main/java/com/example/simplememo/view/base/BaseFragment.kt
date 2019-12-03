@@ -36,11 +36,11 @@ abstract class BaseFragment<V : ViewDataBinding, VM : ViewModel> : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     initView(savedInstanceState)
-    addObserver()
+    subscribeObservers()
   }
 
   abstract fun initView(savedInstanceState: Bundle?)
-  abstract fun addObserver()
+  abstract fun subscribeObservers()
   abstract fun obtainViewModel(): Lazy<VM>
 
   private fun getVmFactory(): ViewModelFactory {

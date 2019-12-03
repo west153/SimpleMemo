@@ -12,9 +12,11 @@ class MemoListFragment : BaseFragment<FragmentMemoListBinding, MemoListViewModel
 
   override fun initView(savedInstanceState: Bundle?) {
     viewDataBinding.viewModel = viewModel
+    viewModel.getMemoData()
   }
 
-  override fun addObserver() {
+  override fun subscribeObservers() {
+
   }
 
   override fun obtainViewModel(): Lazy<MemoListViewModel> = viewModels { viewModelFactory }

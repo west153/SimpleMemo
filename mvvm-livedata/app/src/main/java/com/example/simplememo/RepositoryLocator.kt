@@ -2,6 +2,7 @@ package com.example.simplememo
 
 import android.content.Context
 import androidx.room.Room
+import com.example.simplememo.data.mapper.MemoMapper
 import com.example.simplememo.data.source.DataSource
 import com.example.simplememo.data.source.MemoDataBase
 import com.example.simplememo.data.source.MemoDataSource
@@ -22,12 +23,12 @@ object RepositoryLocator {
   }
 
   private fun createRepository(context: Context): Repository {
-    return MemoRepository(createDataSource(context))
+    return MemoRepository(createDataSource(context), MemoMapper())
   }
 
   private fun createDataSource(context: Context): DataSource {
     val database = database ?: createDataBase(context)
-    return MemoDataSource(database)
+    return MemoDataSource(database.memoDao())
   }
 
   private fun createDataBase(context: Context): MemoDataBase {
