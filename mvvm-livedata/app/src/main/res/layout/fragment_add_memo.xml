@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+  <data>
+    <variable
+        name="viewModel"
+        type="com.example.simplememo.view.addmemo.AddMemoViewModel" />
+  </data>
+
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:orientation="vertical"
+      android:background="@drawable/shape_item_memo_bg">
+
+  </LinearLayout>
+</layout>

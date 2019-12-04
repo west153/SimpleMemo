@@ -8,5 +8,15 @@
       android:id="@+id/memoListFragment"
       android:name="com.example.simplememo.view.memolist.MemoListFragment"
       android:label="MemoListFragment"
-      tools:layout="@layout/fragment_memo_list" />
+      tools:layout="@layout/fragment_memo_list">
+    <action
+        android:id="@+id/action_memoListFragment_to_addMemoFragment"
+        app:destination="@id/addMemoFragment" />
+  </fragment>
+
+  <fragment
+      android:id="@+id/addMemoFragment"
+      android:name="com.example.simplememo.view.addmemo.AddMemoFragment"
+      android:label="AddMemoFragment"
+      tools:layout="@layout/fragment_add_memo" />
 </navigation>
