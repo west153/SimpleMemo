@@ -6,5 +6,4 @@
 * Navigation Componets
 * LiveData
 * DataBinding
-* Mockito
-* Espresso
+* RxJava/Android/Kotlin 2
