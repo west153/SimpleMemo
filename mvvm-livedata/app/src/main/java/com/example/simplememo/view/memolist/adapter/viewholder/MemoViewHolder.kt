@@ -11,7 +11,7 @@ class MemoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
   private val binding = DataBindingUtil.bind<ItemMemoBinding>(view)
   private val context = view.context
 
-  fun bind(vm: MemoListViewModel, memo: MemoVo) {
+  fun bind(vm: MemoListViewModel, memo: MemoVo?) {
 
   }
 }
