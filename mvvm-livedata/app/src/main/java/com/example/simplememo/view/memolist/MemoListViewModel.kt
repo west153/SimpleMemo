@@ -35,7 +35,11 @@ class MemoListViewModel(
 
   private fun subscribeMemoList(item: List<MemoVo>) {
     Log.d("memoList", item.toString())
-    // TODO Init Memo List
+    memoUseCase.getMemoList()
+      .subscribe ({
+        _memoList.value = it
+      },this::onError)
+      .addTo(compositeDisposable)
   }
 
   private fun onError(e: Throwable) {
