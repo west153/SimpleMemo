@@ -2,6 +2,7 @@ package com.example.simplememo.view.memolist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simplememo.R
 import com.example.simplememo.domain.vo.MemoVo
@@ -31,9 +32,13 @@ class MemoListAdapter(private val vm: MemoListViewModel) :
 
 
   override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    ViewCompat.setTransitionName(
+      holder.itemView,
+      holder.itemView.context.getString(R.string.transitionName)
+    )
     when (position) {
       0 -> (holder as MemoAddViewHolder).bind(vm)
-      else -> (holder as MemoViewHolder).bind(vm, null)
+      else -> (holder as MemoViewHolder).bind(vm, memoList[position - 1])
     }
   }
 

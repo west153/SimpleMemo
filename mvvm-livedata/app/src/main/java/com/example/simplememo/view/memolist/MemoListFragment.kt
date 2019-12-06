@@ -1,8 +1,8 @@
 package com.example.simplememo.view.memolist
 
 import android.os.Bundle
-import android.view.ViewTreeObserver
 import androidx.core.view.ViewCompat
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -36,14 +36,9 @@ class MemoListFragment : BaseFragment<FragmentMemoListBinding, MemoListViewModel
 
   private fun setSharedTransition() {
     postponeEnterTransition()
-    viewDataBinding.rvMemoList.viewTreeObserver
-      .addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-        override fun onPreDraw(): Boolean {
-          viewDataBinding.rvMemoList.viewTreeObserver.removeOnPreDrawListener(this)
-          startPostponedEnterTransition()
-          return true
-        }
-      })
+    viewDataBinding.rvMemoList.doOnPreDraw {
+      startPostponedEnterTransition()
+    }
   }
 
   private fun startAddMemoFragment(position: Int) {

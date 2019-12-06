@@ -28,6 +28,8 @@ class MemoListViewModel(
   }
 
   fun startAddMemo(position: Int) {
+    // shared element transition 버그 때문에 list 클리어후 fragment 이동.
+    _memoList.value = arrayListOf()
     _startAddMemo.value = Event(position)
   }
 

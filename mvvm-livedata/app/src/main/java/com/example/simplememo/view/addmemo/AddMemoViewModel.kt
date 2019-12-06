@@ -23,7 +23,7 @@ class AddMemoViewModel(
   val showSaveComplete: LiveData<Event<Unit>> get() = _showSaveComplete
 
   fun saveMemo() {
-    if (editText.value?.isEmpty() == true) {
+    if (editText.value.isNullOrBlank()) {
       _showToast.value = Event(R.string.error_memo_empty)
     } else {
       memoUseCase.saveMemo(editText.value ?: return)

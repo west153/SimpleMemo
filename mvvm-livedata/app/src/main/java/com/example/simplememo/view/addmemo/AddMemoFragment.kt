@@ -57,6 +57,14 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding, AddMemoViewModel>()
 
   override fun obtainViewModel(): Lazy<AddMemoViewModel> = viewModels { viewModelFactory }
 
+  private fun setSharedTransition() {
+    postponeEnterTransition()
+    viewDataBinding.shared.doOnPreDraw {
+      viewDataBinding.shared.transitionName = getString(R.string.transitionName)
+      startPostponedEnterTransition()
+    }
+  }
+
   private fun saveComplete() {
     Toast.makeText(context, R.string.save_complete, Toast.LENGTH_SHORT).show()
     hideKeyboard()
