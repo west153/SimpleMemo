@@ -8,6 +8,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.simplememo.R
@@ -19,16 +20,19 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding, AddMemoViewModel>()
   override val layoutRes: Int
     get() = R.layout.fragment_add_memo
 
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     sharedElementEnterTransition =
       TransitionInflater.from(context).inflateTransition(android.R.transition.move)
   }
 
+
   override fun initView(savedInstanceState: Bundle?) {
     viewDataBinding.viewModel = viewModel
-    viewDataBinding.shared.transitionName = getString(R.string.transitionName)
+    setSharedTransition()
   }
+
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
     inflater.inflate(R.menu.menu_main, menu)
