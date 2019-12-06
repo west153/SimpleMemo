@@ -30,6 +30,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : ViewModel> : Fragment() {
     viewDataBinding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
     _viewModel = obtainViewModel()
     viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+    setHasOptionsMenu(true)
     return viewDataBinding.root
   }
 

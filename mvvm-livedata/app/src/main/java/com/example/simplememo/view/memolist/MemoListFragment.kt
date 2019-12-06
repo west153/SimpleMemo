@@ -24,7 +24,6 @@ class MemoListFragment : BaseFragment<FragmentMemoListBinding, MemoListViewModel
     viewDataBinding.viewModel = viewModel
     viewModel.getMemoData()
     setSharedTransition()
-
   }
 
   override fun subscribeObservers() {

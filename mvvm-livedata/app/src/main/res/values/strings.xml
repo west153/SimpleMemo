@@ -2,8 +2,14 @@
     <string name="app_name">SimpleMemo</string>
     <string name="action_settings">Settings</string>
 
-    <string name="memo_list">�޸� ���</string>
-    <string name="add_memo">�޸� �ۼ�</string>
+    <string name="memo_list">메모 목록</string>
+    <string name="add_memo">메모 작성</string>
 
+    <string name="done">Done</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
     <string name="transitionName">shared</string>
+
+    <string name="save_complete">메모 작성 완료.</string>
+    <string name="error_memo_empty">메모를 입력해주세요.</string>
 </resources>

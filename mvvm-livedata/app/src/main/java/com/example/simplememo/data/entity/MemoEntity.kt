@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 data class MemoEntity(
   @PrimaryKey(autoGenerate = true)
   val id: Long = 0,
-  val title: String?,
   val content: String?,
   val date:Long
 )
