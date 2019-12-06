@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.simplememo.common.ContextLocator
+import com.example.simplememo.common.Event
 import com.example.simplememo.domain.usecase.MemoUseCase
 import com.example.simplememo.domain.vo.MemoVo
 import com.example.simplememo.view.base.BaseViewModel
@@ -17,19 +18,22 @@ class MemoListViewModel(
   private val _memoList = MutableLiveData<List<MemoVo>>()
   val memoList: LiveData<List<MemoVo>> get() = _memoList
 
+  private val _startAddMemo = MutableLiveData<Event<Int>>()
+  val startAddMemo: LiveData<Event<Int>> get() = _startAddMemo
+
   fun getMemoData() {
     memoUseCase.getMemoList()
       .subscribe(this::subscribeMemoList, this::onError)
       .addTo(compositeDisposable)
   }
 
+  fun startAddMemo(position: Int) {
+    _startAddMemo.value = Event(position)
+  }
+
   private fun subscribeMemoList(item: List<MemoVo>) {
     Log.d("memoList", item.toString())
-    if (item.isEmpty()) {
-      // TODO show empty view
-    } else {
-      // TODO Init Memo List
-    }
+    // TODO Init Memo List
   }
 
   private fun onError(e: Throwable) {

@@ -4,28 +4,30 @@
   <data>
 
     <variable
+        name="position"
+        type="Integer" />
+
+    <variable
         name="viewModel"
         type="com.example.simplememo.view.memolist.MemoListViewModel" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="#cecece">
+      android:layout_height="200dp"
+      android:background="@drawable/ripple_item_memo"
+      android:onClick="@{()->viewModel.startAddMemo(position)}"
+      app:elevation="4dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMemoList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:item="@{viewModel.memoList}"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_add_24px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:spanCount="2"
-        app:viewModel="@{viewModel}" />
+        app:layout_constraintTop_toTopOf="parent" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

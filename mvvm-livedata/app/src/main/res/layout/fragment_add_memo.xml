@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
   <data>
+
     <variable
         name="viewModel"
         type="com.example.simplememo.view.addmemo.AddMemoViewModel" />
   </data>
 
-  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
       android:layout_width="match_parent"
-      android:layout_height="100dp"
-      android:orientation="vertical"
-      android:background="@drawable/shape_item_memo_bg">
+      android:layout_height="match_parent"
+      android:background="#cecece">
 
-  </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shared"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+      <EditText
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:background="@drawable/shape_add_memo_edit_bg"
+          android:gravity="top"
+          android:focusable="true"
+          android:padding="4dp"
+          android:textSize="16sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

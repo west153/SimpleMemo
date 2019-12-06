@@ -22,10 +22,10 @@ class MemoListAdapter(private val vm: MemoListViewModel) :
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
     when (viewType) {
       VIEW_TYPE_ADD -> MemoAddViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_add_memo, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_list_add_memo, parent, false)
       )
       else -> MemoViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_memo, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_list_memo, parent, false)
       )
     }
 
@@ -37,7 +37,7 @@ class MemoListAdapter(private val vm: MemoListViewModel) :
     }
   }
 
-  override fun getItemCount(): Int = memoList.size + 4
+  override fun getItemCount(): Int = memoList.size + 1
 
   override fun getItemViewType(position: Int): Int {
     return if (position == 0) VIEW_TYPE_ADD else VIEW_TYPE_MEMO

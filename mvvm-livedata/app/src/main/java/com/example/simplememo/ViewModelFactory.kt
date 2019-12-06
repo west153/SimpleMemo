@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.simplememo.common.ContextLocator
 import com.example.simplememo.domain.Repository
 import com.example.simplememo.domain.usecase.MemoUseCase
+import com.example.simplememo.view.addmemo.AddMemoViewModel
 import com.example.simplememo.view.main.MainViewModel
 import com.example.simplememo.view.memolist.MemoListViewModel
 
@@ -22,6 +23,8 @@ class ViewModelFactory(
           MainViewModel(MemoUseCase(repository), contextLocator)
         isAssignableFrom(MemoListViewModel::class.java) ->
           MemoListViewModel(MemoUseCase(repository), contextLocator)
+        isAssignableFrom(AddMemoViewModel::class.java) ->
+          AddMemoViewModel(MemoUseCase(repository), contextLocator)
         else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
       }
     } as T
