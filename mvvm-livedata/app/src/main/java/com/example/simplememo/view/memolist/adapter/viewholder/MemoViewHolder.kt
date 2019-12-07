@@ -14,6 +14,7 @@ class MemoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
   fun bind(vm: MemoListViewModel, memo: MemoVo) {
     binding?.viewModel = vm
     binding?.position = adapterPosition
+    binding?.memo = memo
     binding?.tvContent?.text = memo.content
   }
 }

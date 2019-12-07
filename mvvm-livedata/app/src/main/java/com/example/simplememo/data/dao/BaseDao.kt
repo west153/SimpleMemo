@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
 import io.reactivex.Completable
+import io.reactivex.Single
 
 interface BaseDao<T> {
 
@@ -18,5 +19,5 @@ interface BaseDao<T> {
   fun delete(any: T)
 
   @Update(onConflict = OnConflictStrategy.ABORT)
-  fun update(any: T): Int
+  fun update(any: T): Single<Int>
 }

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.simplememo.R
 import com.example.simplememo.common.EventObserver
 import com.example.simplememo.databinding.FragmentAddMemoBinding
@@ -20,6 +21,7 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding, AddMemoViewModel>()
   override val layoutRes: Int
     get() = R.layout.fragment_add_memo
 
+  private val args: AddMemoFragmentArgs by navArgs()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -35,9 +37,7 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding, AddMemoViewModel>()
 
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-    inflater.inflate(R.menu.menu_main, menu)
-    menu.removeItem(R.id.action_delete)
-    menu.removeItem(R.id.action_edit)
+    inflater.inflate(R.menu.menu_add, menu)
     super.onCreateOptionsMenu(menu, inflater)
   }
 
@@ -64,7 +64,8 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding, AddMemoViewModel>()
   private fun setSharedTransition() {
     postponeEnterTransition()
     viewDataBinding.shared.doOnPreDraw {
-      viewDataBinding.shared.transitionName = getString(R.string.transitionName)
+      viewDataBinding.shared.transitionName =
+        getString(R.string.transitionName) + "${args.position}"
       startPostponedEnterTransition()
     }
   }

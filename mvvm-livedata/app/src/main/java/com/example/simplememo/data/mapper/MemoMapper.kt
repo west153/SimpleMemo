@@ -5,11 +5,11 @@ import com.example.simplememo.domain.vo.MemoVo
 
 class MemoMapper : Mapper<MemoEntity, MemoVo> {
 
-  override fun entityTo(entity: MemoEntity): MemoVo {
-    return MemoVo( entity.content, entity.date)
+  override fun entityToVo(entity: MemoEntity): MemoVo {
+    return MemoVo(entity.id, entity.content, entity.date)
   }
 
-  override fun fromEntity(vo: MemoVo): MemoEntity {
-    return MemoEntity(content = vo.content, date = vo.date)
+  override fun voToEntity(vo: MemoVo): MemoEntity {
+    return MemoEntity(vo.id, content = vo.content, date = vo.date)
   }
 }

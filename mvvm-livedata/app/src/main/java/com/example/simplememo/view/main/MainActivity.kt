@@ -49,6 +49,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     when (id) {
       R.id.memoListFragment -> getString(R.string.memo_list)
       R.id.addMemoFragment -> getString(R.string.add_memo)
+      R.id.memoDetailFragment -> getString(R.string.detail_memo)
       else -> ""
     }.let {
       supportActionBar?.title = it

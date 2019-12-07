@@ -12,11 +12,30 @@
     <action
         android:id="@+id/action_memoListFragment_to_addMemoFragment"
         app:destination="@id/addMemoFragment" />
+    <action
+        android:id="@+id/action_memoListFragment_to_memoDetailFragment"
+        app:destination="@id/memoDetailFragment" />
   </fragment>
 
   <fragment
       android:id="@+id/addMemoFragment"
       android:name="com.example.simplememo.view.addmemo.AddMemoFragment"
       android:label="AddMemoFragment"
-      tools:layout="@layout/fragment_add_memo" />
+      tools:layout="@layout/fragment_add_memo">
+    <argument
+        android:name="position"
+        app:argType="integer" />
+  </fragment>
+  <fragment
+      android:id="@+id/memoDetailFragment"
+      android:name="com.example.simplememo.view.memodetail.MemoDetailFragment"
+      android:label="MemoDetailFragment"
+      tools:layout="@layout/fragment_memo_detail">
+    <argument
+        android:name="position"
+        app:argType="integer" />
+    <argument
+        android:name="memoId"
+        app:argType="long" />
+  </fragment>
 </navigation>

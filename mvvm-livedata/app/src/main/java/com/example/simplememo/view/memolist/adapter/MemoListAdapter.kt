@@ -33,8 +33,7 @@ class MemoListAdapter(private val vm: MemoListViewModel) :
 
   override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
     ViewCompat.setTransitionName(
-      holder.itemView,
-      holder.itemView.context.getString(R.string.transitionName)
+      holder.itemView, holder.itemView.context.getString(R.string.transitionName) + "$position"
     )
     when (position) {
       0 -> (holder as MemoAddViewHolder).bind(vm)

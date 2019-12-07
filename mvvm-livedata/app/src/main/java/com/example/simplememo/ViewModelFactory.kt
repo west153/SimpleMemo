@@ -7,6 +7,7 @@ import com.example.simplememo.domain.Repository
 import com.example.simplememo.domain.usecase.MemoUseCase
 import com.example.simplememo.view.addmemo.AddMemoViewModel
 import com.example.simplememo.view.main.MainViewModel
+import com.example.simplememo.view.memodetail.MemoDetailViewModel
 import com.example.simplememo.view.memolist.MemoListViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -25,6 +26,8 @@ class ViewModelFactory(
           MemoListViewModel(MemoUseCase(repository), contextLocator)
         isAssignableFrom(AddMemoViewModel::class.java) ->
           AddMemoViewModel(MemoUseCase(repository), contextLocator)
+        isAssignableFrom(MemoDetailViewModel::class.java) ->
+          MemoDetailViewModel(MemoUseCase(repository), contextLocator)
         else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
       }
     } as T

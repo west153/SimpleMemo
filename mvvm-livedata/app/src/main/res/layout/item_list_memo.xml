@@ -8,6 +8,10 @@
         type="Integer" />
 
     <variable
+        name="memo"
+        type="com.example.simplememo.domain.vo.MemoVo" />
+
+    <variable
         name="viewModel"
         type="com.example.simplememo.view.memolist.MemoListViewModel" />
   </data>
@@ -16,6 +20,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:background="@drawable/ripple_item_memo"
+      android:onClick="@{()->viewModel.startMemoDetail(position,memo)}"
       app:elevation="4dp">
 
     <TextView

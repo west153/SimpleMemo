@@ -1,6 +1,6 @@
 package com.example.simplememo.data.mapper
 
 interface Mapper<V, R> {
-  fun entityTo(entity: V): R
-  fun fromEntity(vo: R): V
+  fun entityToVo(entity: V): R
+  fun voToEntity(vo: R): V
 }
