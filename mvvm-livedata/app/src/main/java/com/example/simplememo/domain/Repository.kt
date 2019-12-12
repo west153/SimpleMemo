@@ -11,4 +11,5 @@ interface Repository {
   fun updateMemo(memo: MemoVo): Single<Int>
   fun getMemo(id: Long): Flowable<MemoVo>
   fun removeMemo(id: Long): Single<Int>
+  fun removeAll():Completable
 }

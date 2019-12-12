@@ -32,4 +32,8 @@ class MemoRepository(
   override fun removeMemo(id: Long): Single<Int> {
     return memoDataSource.removeMemo(id)
   }
+
+  override fun removeAll(): Completable {
+    return memoDataSource.removeAll()
+  }
 }

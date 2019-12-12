@@ -11,4 +11,5 @@ interface DataSource {
   fun getMemo(id: Long): Flowable<MemoEntity>
   fun updateMemo(memo: MemoEntity): Single<Int>
   fun removeMemo(id: Long): Single<Int>
+  fun removeAll(): Completable
 }

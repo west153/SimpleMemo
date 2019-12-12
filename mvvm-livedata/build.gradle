@@ -68,6 +68,17 @@ ext {
     v_okhttp3_loggingInterceptor = '3.12.1'
     v_gson = '2.8.5'
 
+    //unit test
+    v_junit = '4.12'
+    v_mockito = '2.8.9'
+    v_dexMaker = '2.12.1'
+    v_espresso = '3.2.0-beta01'
+
+    //androidX JVM test
+    v_androidXTestCore = '1.2.0'
+    v_androidXTestExtKotlinRunner = '1.1.1'
+    v_androidXTestRules = '1.2.0-beta01'
+
     //lib
     v_glide = '4.9.0'
     v_tedPermisson_rx2 = '2.2.2'

@@ -37,4 +37,8 @@ class MemoDataSource(private val memoDao: MemoDao) : DataSource {
       .observeOn(AndroidSchedulers.mainThread())
   }
 
+  override fun removeAll(): Completable {
+    return memoDao.deleteAll()
+  }
+
 }

@@ -3,6 +3,7 @@ package com.example.simplememo.data.dao
 import androidx.room.Dao
 import androidx.room.Query
 import com.example.simplememo.data.entity.MemoEntity
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -18,4 +19,6 @@ interface MemoDao : BaseDao<MemoEntity> {
   @Query("DELETE FROM Memo WHERE id = :id")
   fun deleteById(id: Long): Single<Int>
 
+  @Query("DELETE FROM Memo")
+  fun deleteAll(): Completable
 }
