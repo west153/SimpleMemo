@@ -68,16 +68,15 @@ ext {
     v_okhttp3_loggingInterceptor = '3.12.1'
     v_gson = '2.8.5'
 
-    //unit test
+    //test
+    v_androidXFragment = '1.2.0-rc03'
+    v_core = '1.3.0-alpha03'
     v_junit = '4.12'
-    v_mockito = '2.8.9'
-    v_dexMaker = '2.12.1'
-    v_espresso = '3.2.0-beta01'
-
-    //androidX JVM test
-    v_androidXTestCore = '1.2.0'
-    v_androidXTestExtKotlinRunner = '1.1.1'
-    v_androidXTestRules = '1.2.0-beta01'
+    v_robolectric = '4.3.1'
+    v_extJunit = '1.1.2-alpha03'
+    v_espresso = '3.3.0-alpha03'
+    v_truth = '1.0'
+    v_runner = '1.3.0-alpha03'
 
     //lib
     v_glide = '4.9.0'
