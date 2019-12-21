@@ -37,7 +37,6 @@ android {
     }
 
     testOptions {
-        // include the android resources in local tests. See http://robolectric.org/migrating/#migrating-to-40
         unitTests.includeAndroidResources = true
     }
 }
@@ -85,6 +84,7 @@ dependencies {
     testImplementation "androidx.test.espresso:espresso-core:$v_espresso"
     testImplementation "com.google.truth:truth:$v_truth"
     testImplementation "androidx.arch.core:core-testing:$v_arch"
+    testImplementation "org.mockito:mockito-core:$v_mockito"
 
     androidTestImplementation "androidx.test:core:$v_core"
     androidTestImplementation "androidx.test.ext:junit:$v_extJunit"
@@ -95,6 +95,8 @@ dependencies {
     androidTestImplementation "com.google.truth:truth:$v_truth"
     androidTestImplementation "org.robolectric:annotations:$v_robolectric"
     androidTestImplementation "androidx.arch.core:core-testing:$v_arch"
+    androidTestImplementation "org.mockito:mockito-core:$v_mockito"
+    androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:$v_dexMaker"
 
     //lib
     implementation("com.github.bumptech.glide:glide:$v_glide") {
