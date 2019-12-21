@@ -1,21 +1,20 @@
 package com.example.simplememo.memolist
 
-import androidx.fragment.app.testing.launchFragmentInContainer
-import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.example.simplememo.R
+import com.example.simplememo.RecyclerViewItemCountAssertion.Companion.withItemCount
 import com.example.simplememo.RepositoryLocator
+import com.example.simplememo.TestRepository
 import com.example.simplememo.domain.Repository
-import com.example.simplememo.utils.DataBindingIdlingResource
-import com.example.simplememo.utils.monitorFragment
-import com.example.simplememo.view.memolist.MemoListFragment
-import io.reactivex.disposables.CompositeDisposable
+import com.example.simplememo.view.main.MainActivity
+import io.reactivex.observers.TestObserver
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -26,43 +25,37 @@ import org.junit.runner.RunWith
 class MemoListFragmentTest {
 
   private lateinit var repository: Repository
-  private val compositeDisposable = CompositeDisposable()
-  private val dataBindingIdlingResource = DataBindingIdlingResource()
+  private val mTestObserver = TestObserver.create<Any>()
 
   @Before
-  fun init() {
-    repository = RepositoryLocator.provideRepository(ApplicationProvider.getApplicationContext())
+  fun setup() {
+    repository = TestRepository()
+    RepositoryLocator.memoRepository = repository
   }
 
   @After
   fun clear() {
     RepositoryLocator.close()
-    compositeDisposable.clear()
   }
 
-  @Before
-  fun registerIdlingResource() {
-    IdlingRegistry.getInstance().register(dataBindingIdlingResource)
-  }
-
-
-  @After
-  fun unregisterIdlingResource() {
-    IdlingRegistry.getInstance().unregister(dataBindingIdlingResource)
-  }
 
   @Test
-  fun memoListEmpty() {
-    // given - launch fragment
-    val fragmentScenario = launchFragmentInContainer<MemoListFragment>()
-
-    dataBindingIdlingResource.monitorFragment(fragmentScenario)
-
-    // when - remove memo all
+  fun memoListIsEmpty() {
+    // given - remove all list
     repository.removeAll()
+      .subscribe(mTestObserver)
 
-    // then - verify
-    onView(withId(R.drawable.ic_add_24px)).check(matches(isDisplayed()))
+    //when - start activity
+    launchActivity()
+
+    // then - verify list size
+    onView(withId(R.id.ivAdd)).check(matches(isDisplayed()))
+    onView(withId(R.id.rvMemoList)).check(withItemCount(1))
   }
+
+  private fun launchActivity(): ActivityScenario<MainActivity>? {
+    return launch(MainActivity::class.java)
+  }
+
 
 }

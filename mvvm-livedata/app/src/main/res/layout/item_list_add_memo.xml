@@ -20,6 +20,7 @@
       app:elevation="4dp">
 
     <ImageView
+        android:id="@+id/ivAdd"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"

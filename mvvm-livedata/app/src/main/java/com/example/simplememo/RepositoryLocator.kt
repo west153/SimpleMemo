@@ -14,16 +14,18 @@ object RepositoryLocator {
 
   private var database: MemoDataBase? = null
   @Volatile
-  var dataRepository: Repository? = null
+  var memoRepository: Repository? = null
 
   fun provideRepository(context: Context): Repository {
     synchronized(this) {
-      return dataRepository ?: dataRepository ?: createRepository(context)
+      return memoRepository ?: memoRepository ?: createRepository(context)
     }
   }
 
   private fun createRepository(context: Context): Repository {
-    return MemoRepository(createDataSource(context), MemoMapper())
+    val repository = MemoRepository(createDataSource(context), MemoMapper())
+    memoRepository = repository
+    return repository
   }
 
   private fun createDataSource(context: Context): DataSource {
@@ -43,5 +45,7 @@ object RepositoryLocator {
 
   fun close() {
     database?.close()
+    database = null
+    memoRepository = null
   }
 }
